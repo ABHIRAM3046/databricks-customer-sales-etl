@@ -19,7 +19,7 @@ jobs:
 
       - name: Validate project structure
         run: |
-          test -d notebooks
+          test -d notebooks-does-not-exist
           test -d tests
           test -f README.md
 
