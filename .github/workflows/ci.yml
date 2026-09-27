@@ -1,0 +1,28 @@
+name: Data Engineering CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate project structure
+        run: |
+          test -d notebooks
+          test -d tests
+          test -f README.md
+
+      - name: Python syntax check
+        run: |
+          python -m compileall .
